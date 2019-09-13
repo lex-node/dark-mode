@@ -2,16 +2,13 @@ import React, { useState } from 'react';
 import {useDarkMode} from '../hooks/useDarkMode';
 
 const Navbar = () => {
-  const toggleMode = e => {
-    e.preventDefault();
-    useDarkMode();
-  };
+
   return (
     <nav className="navbar">
       <h1>Crypto Tracker</h1>
       <div className="dark-mode__toggle">
         <div
-          onClick={toggleMode}
+          onClick={useDarkMode}
           className={darkMode ? 'toggle toggled' : 'toggle'}
         />
       </div>

@@ -10,21 +10,20 @@
 - Finally, we need to return something out of here so we can use this in our app. What do you think we'll need? We'll need to know if dark mode is enabled, right? And we'll need a setter function to toggle dark mode. Let's just forward the value and the setter that were returned out of the `useLocalStorage` call. Return those two values in an array as well.*/
 
 import {useLocalStorage} from "./useLocalStorage";
-import React from 'react';
+import React, {useEffect} from 'react';
 
-const useDarkMode = () => {
+export const useDarkMode = () => {
+
     const [darkModeStatus, setDarkModeStatus] = useLocalStorage("darkEnabled", false);
 
 
+    useEffect(() => {
+        darkModeStatus ? document.getElementByName("body").classList.add("dark-mode") : document.getElementByName("body").classList.remove("dark-mode");
 
-useEffect(() => {
-     darkModeStatus ? document.getElementByName("body").classList.add("dark-mode") : document.getElementByName("body").classList.remove("dark-mode");
+    }, [darkModeStatus]);
 
-}, [darkModeStatus]);
+    return [darkModeStatus, setDarkModeStatus];
 
-return [darkModeStatus, setDarkModeStatus];
 
 
 }
-
-export default useDarkMode;
