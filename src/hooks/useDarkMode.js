@@ -9,7 +9,7 @@
   - We don't want this effect to run every time anything in the component changes, right? Think about what piece of data this hook depends on, and should be synced with, and add that in its dependency array.
 - Finally, we need to return something out of here so we can use this in our app. What do you think we'll need? We'll need to know if dark mode is enabled, right? And we'll need a setter function to toggle dark mode. Let's just forward the value and the setter that were returned out of the `useLocalStorage` call. Return those two values in an array as well.*/
 
-import "./useLocalStorage";
+import {useLocalStorage} from "./useLocalStorage";
 import React from 'react';
 
 const useDarkMode = () => {
@@ -27,4 +27,4 @@ return [darkModeStatus, setDarkModeStatus];
 
 }
 
-export default useDarkMode();
+export default useDarkMode;
